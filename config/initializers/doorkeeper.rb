@@ -13,17 +13,8 @@ Doorkeeper.configure do
     #   User.find_by(id: session[:user_id]) || redirect_to(new_user_session_url)
   end
 
-  # resource_owner_from_credentials do |_routes|
-  #   User.authenticate(params[:email], params[:password])
-  # end
-
-  resource_owner_from_credentials do |routes|
-    request.params[:user] = {email: request.params[:username], password: request.params[:password]}
-    request.env["warden"].logout(:user)
-    request.env["devise.allow_params_authentication"] = true
-    # Set `store: false` to stop Warden from storing user in session
-    # https://github.com/doorkeeper-gem/doorkeeper/issues/475#issuecomment-305517549
-    request.env["warden"].authenticate!(scope: :user, store: false)
+  resource_owner_from_credentials do |_routes|
+    User.authenticate(params[:email], params[:password])
   end
 
   grant_flows %w(password)
