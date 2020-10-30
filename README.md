@@ -1,24 +1,11 @@
-# README
+### Login
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+curl -X POST -d "grant_type=password&email=user@example.com&password=abc123" localhost:3000/oauth/token
+```
 
-Things you may want to cover:
+### Get All Posts
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+curl -v localhost:3000/posts?access_token=OurAccessToken
+```
