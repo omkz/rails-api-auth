@@ -7,5 +7,5 @@ curl -X POST -d "grant_type=password&email=user@example.com&password=abc123" loc
 ### Get All Posts
 
 ```
-curl -v localhost:3000/posts?access_token=OurAccessToken
+curl -v localhost:3000/api/posts?access_token=OurAccessToken
 ```
